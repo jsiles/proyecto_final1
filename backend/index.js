@@ -4,6 +4,8 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const clienteRoutes = require("./routes/clienteRoutes");
 const pedidoRoutes = require("./routes/pedidoRoutes");
+const authRoutes = require('./routes/authRoutes');
+ 
 
 // Cargar variables de entorno desde .env
 dotenv.config();
@@ -34,6 +36,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/clientes", clienteRoutes);
 app.use("/pedidos", pedidoRoutes);
+app.use('/api/auth', authRoutes);
 
 // Ruta base
 app.get("/", (req, res) => {

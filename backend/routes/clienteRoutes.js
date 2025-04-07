@@ -1,7 +1,7 @@
 const express = require("express"); // Importa Express para manejar rutas
 const { Cliente } = require("../models"); // Importa el modelo Cliente desde la carpeta models
 const router = express.Router(); // Crea un router de Express
-
+const authMiddleware = require('../middleware/authMiddleware');
 // Crear un nuevo cliente
 router.post("/", async (req, res) => {
   try {
@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
 });
 
 // Obtener todos los clientes
-router.get("/", async (req, res) => {
+router.get("/", authMiddleware.autenticar, async (req, res) => {
   const clientes = await Cliente.findAll(); // Busca todos los clientes en la BD
   res.json(clientes); // Devuelve la lista de clientes en formato JSON
 });
