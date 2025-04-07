@@ -22,5 +22,8 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Tarea',
   });
+  Tarea.associate = (models) => {
+    Tarea.belongsTo(models.Usuario, { foreignKey: "usuarioId" });
+    };
   return Tarea;
 };
