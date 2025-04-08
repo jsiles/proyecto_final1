@@ -1,18 +1,31 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Home from './pages/Home';
-import Clientes from './pages/Clientes';
-
+import React, { useState } from 'react';
+import LoginForm from './components/LoginForm';
+import Tareas from './pages/Tareas';
 const App = () => {
+  const [user, setUser] = useState(null);
+
+  const handleLogin = (userData) => {
+    setUser(userData);
+  };
+
+  const handleLogout = () => {
+    setUser(null);
+  };
+
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/clientes" element={<Clientes />} />
-      </Routes>
-    </Router>
+    <div className="App">
+      {user ? (
+        <div>
+          <h1>Bienvenido, {user.username}!</h1>
+          <button onClick={handleLogout}>Cerrar sesión</button>
+          {/* Aquí iría el contenido de tu app autenticada */}
+          <Tareas></Tareas>
+
+        </div>
+      ) : (
+        <LoginForm onLogin={handleLogin} />
+      )}
+    </div>
   );
 };
 
