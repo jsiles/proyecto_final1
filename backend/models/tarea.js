@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     titulo: DataTypes.STRING,
     descripcion: DataTypes.STRING,
     estado: DataTypes.STRING,
-    fechaLimite: DataTypes.DATE
+    fechaLimite: DataTypes.DATE,
+    usuarioId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Tarea',
