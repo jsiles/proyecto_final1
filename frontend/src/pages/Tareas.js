@@ -13,7 +13,6 @@ const Clientes = () => {
   return (
     <div className="clientes-container">
       <div className="clientes-form">
-        <div>Buscar:</div>
         <TareaForm onClienteAdded={handleClienteAdded} />
       </div>
       <div className="clientes-list">

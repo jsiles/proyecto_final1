@@ -5,11 +5,18 @@ import '../styles/TareaList.css'; // Importa los estilos
 const TareaList = () => {
   const [tareas, setTareas] = useState([]);
   const [error, setError] = useState(null);
-
+  const [estado, setEstado] = useState(null);
+  const [titulo, setTitulo] = useState(null);
   useEffect(() => {
     const fetchTareas = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/api/tasks'); // URL corregida
+        const response = await axios.get('http://localhost:3001/api/tasks', { // Realizamos una petición POST al servidor con los datos.
+        titulo, // Enviamos el valor de 'titulo'.
+        estado, // Enviamos el valor de 'estado'.
+      });
+      // Llamamos a la función onTareaAdded con los datos del tarea agregado desde la respuesta del servidor.
+      setTitulo(''); // Limpiamos el campo de 'titulo' después de enviar el formulario.
+      setEstado(''); // Limpiamos el campo de 'estado' después de enviar el formulario.
         setTareas(response.data);
       } catch (err) {
         console.error('Error al obtener tareas:', err);
@@ -31,7 +38,6 @@ const TareaList = () => {
             <th>Título</th>
             <th>Descripción</th>
             <th>Estado</th>
-            <th>Fecha Límite</th>
           </tr>
         </thead>
         <tbody>
@@ -42,7 +48,6 @@ const TareaList = () => {
                 <td>{tarea.titulo}</td>
                 <td>{tarea.descripcion}</td>
                 <td>{tarea.estado}</td>
-                <td>{tarea.fechaLimite}</td>
               </tr>
             ))
           ) : (
