@@ -36,7 +36,7 @@ const Tareas = () => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.post(
-        'http://localhost:3001/api/tasks',
+        process.env.REACT_APP_API_URL+'/api/tasks',
         {
           titulo,
           descripcion,
@@ -71,7 +71,7 @@ const Tareas = () => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.put(
-        `http://localhost:3001/api/tasks/${id}`,
+        process.env.REACT_APP_API_URL+`/api/tasks/${id}`,
         {
           titulo,
           descripcion,
@@ -114,7 +114,7 @@ const Tareas = () => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.delete(
-        `http://localhost:3001/api/tasks/${id}`, {
+        process.env.REACT_APP_API_URL+`/api/tasks/${id}`, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,

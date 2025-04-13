@@ -9,7 +9,7 @@ const App = () => {
   const [errorModal, setErrorModal] = useState('');
   const onLogin = async ({ email, password }) => {
     try {
-      const response = await fetch('http://localhost:3001/api/auth/login', {
+      const response = await fetch(process.env.REACT_APP_API_URL+'/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ const App = () => {
   const onRegister = async ({ email, username, password }) => {
     //setUser({ email, username, password });
     try {
-      const response = await fetch('http://localhost:3001/api/auth/register', {
+      const response = await fetch(process.env.REACT_APP_API_URL+'/api/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
