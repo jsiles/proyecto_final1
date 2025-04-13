@@ -25,7 +25,7 @@ const sequelize = new Sequelize(
 
 // Configurar CORS
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || "*", // ejemplo: http://localhost:5173
+  origin:  "*", // ejemplo: http://localhost:5173
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
 };
