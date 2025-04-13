@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import LoginForm from './components/LoginForm';
 import Tareas from './pages/Tareas';
+import ErrorModal from './components/ErrorModal';
+
 const App = () => {
   const [email, setUser] = useState(null);
   const [isOK, setIsOk] = useState(false);
-
+  const [errorModal, setErrorModal] = useState('');
   const onLogin = async ({ email, password }) => {
     try {
       const response = await fetch('http://localhost:3001/api/auth/login', {
@@ -21,14 +23,15 @@ const App = () => {
         // Aquí puedes guardar el token, redirigir, etc.
         localStorage.setItem('token', data.token);
         localStorage.setItem('username', data.username);
+        localStorage.setItem('usuarioId', data.usuarioId);
         const username = data.username
         setUser({ email, password, username });
       } else {
-        alert(data.message || 'Credenciales incorrectas');
+        setErrorModal(data.message || 'Credenciales incorrectas');
       }
     } catch (err) {
       console.error('Error de red:', err);
-      alert('Error de red o servidor no disponible');
+      setErrorModal('Error de red o servidor no disponible');
     }
 
   };
@@ -50,11 +53,11 @@ const App = () => {
 
         setIsOk(!isOK);
       } else {
-        alert(data.message || 'Credenciales incorrectas');
+        setErrorModal(data.message || 'Credenciales incorrectas');
       }
     } catch (err) {
       console.error('Error de red:', err);
-      alert('Error de red o servidor no disponible');
+      setErrorModal('Error de red o servidor no disponible');
     }
   };
 
@@ -92,6 +95,7 @@ const App = () => {
 </div>
 </div>
       )}
+        <ErrorModal mensaje={errorModal} onCerrar={() => setErrorModal('')} />
     </div>
   );
 };
