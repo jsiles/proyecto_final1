@@ -41,6 +41,7 @@ const LoginForm = ({ onLogin, onRegister }) => {
     } else {
       // Login
       await onLogin({ email, password });
+      limpiarCampos();
     }
   };
 
