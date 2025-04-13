@@ -59,4 +59,3 @@ dist/
 # Cache y logs
 *.log
 .cache/
-public/
