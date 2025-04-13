@@ -37,7 +37,7 @@ app.use('/api/auth', authRoutes);
 app.use("/api/tasks", tasksRoutes);
 // Ruta base
 app.get("/", (req, res) => {
-  res.send("¡Bienvenido a la API! Usa /clientes o /pedidos para interactuar.");
+  res.send("¡Bienvenido a la API! Usa Tareas para interactuar.");
 });
 
 // Conectar a la base de datos
