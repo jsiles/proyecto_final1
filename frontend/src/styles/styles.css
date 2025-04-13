@@ -271,6 +271,7 @@ a.logo:link, a.logo:visited{
   background: rgba(255, 255, 255, 0.90);
   width: 280px;
   height: 64px;
+  padding-left: 20px;
 }
 a.logo img{
   display: block;
