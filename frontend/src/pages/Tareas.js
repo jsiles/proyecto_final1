@@ -4,7 +4,6 @@ import TareaForm from '../components/TareaForm';
 import TareaFormCrear from '../components/TareaFormCrear';
 import TareaFormEditar from '../components/TareaFormEditar';
 import TareaList from '../components/TareaList';
-import '../styles/Cliente.css';
 import axios from 'axios';
 
 const Tareas = () => {
